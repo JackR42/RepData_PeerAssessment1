@@ -1,4 +1,4 @@
-## Introduction
+## Info
 
 Coursera specialisation: Data Science 
 
@@ -7,6 +7,7 @@ Course: Reproducible Research
 Forked from: rdpeng/RepData_PeerAssessment1
 
 
+## Introduction
 
 It is now possible to collect a large amount of data about personal
 movement using activity monitoring devices such as a
