@@ -20,7 +20,7 @@ nrOfStepsPerDay <- tapply(data$steps, data$date, sum, na.rm=TRUE)
 ### 1. Make a histogram of the total number of steps taken each day
 
 ```r
-qplot(nrOfStepsPerDay, xlab='Total number of steps per day', ylab='Frequency - 500', binwidth=500)
+qplot(nrOfStepsPerDay, xlab='Total number of steps per day', ylab='Frequency - 500', binwidth=500, fill=I("red"), col=I("blue"))
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
@@ -46,7 +46,7 @@ avgStepsPerInterval <- aggregate(x=list(stepsMean=data$steps), by=list(interval=
 
 ```r
 ggplot(data=avgStepsPerInterval, aes(x=interval, y=stepsMean)) +
-    geom_line() +
+    geom_line(color='red', size=2) +
     xlab("Interval - 5 minute") +
     ylab("Avg nr of steps") 
 ```
@@ -90,7 +90,7 @@ dataImputed$steps <- impute(data$steps, fun=mean)
 
 ```r
 nrOfStepsPerDayImputed <- tapply(dataImputed$steps, dataImputed$date, sum)
-qplot(nrOfStepsPerDayImputed, xlab='Total steps per day - Imputed', ylab='Frequency - 500', binwidth=500)
+qplot(nrOfStepsPerDayImputed, xlab='Total steps per day - Imputed', ylab='Frequency - 500', binwidth=500, fill=I("red"), col=I("blue"))
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
@@ -121,7 +121,7 @@ dataImputed$dateType <-  ifelse(as.POSIXlt(dataImputed$date)$wday %in% c(0,6), '
 ```r
 avgdataImputed <- aggregate(steps ~ interval + dateType, data=dataImputed, mean)
 ggplot(avgdataImputed, aes(interval, steps)) + 
-    geom_line() + 
+    geom_line(color='red', size=2) +
     facet_grid(dateType ~ .) +
     xlab("Interval - 5 minutes") + 
     ylab("Avg nr of steps")
